@@ -1,37 +1,12 @@
 import React from 'react'
-import { render } from 'react-dom';
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  RouteComponentProps
-} from "react-router-dom";
-
-import { HelloWorld } from './components/HelloWorld';
+import {render} from 'react-dom';
+import {BrowserRouter as Router} from "react-router-dom";
+import {Navigation} from './containers/Nav';
+import {Body} from './containers/Body';
 
 const App = () => <Router>
-  <div>
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Hello world</Link>
-        </li>
-        <li>
-          <Link to="/someid">Home + id</Link>
-        </li>
-      </ul>
-    </nav>
-    <Switch>
-      <Route path="/">
-        <HelloWorld />
-      </Route>
-      <Route>
-        <h1>Have no any match 404!</h1>
-      </Route>
-    </Switch>
-  </div>
+    <Navigation/>
+    <Body/>
 </Router>
 
-render(<App />, document.getElementById('root'));
+render(<App/>, document.getElementById('root'));
