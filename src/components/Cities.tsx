@@ -103,6 +103,7 @@ export class Cities extends Component<IProps, IState> {
                     FIND
                 </button>
             </div>
+            {!API_KEY ? <div className="alert alert-danger my-3" role="alert">Please, set your API_KEY in src/config.ts</div> : ''}
             {found}
         </>);
     }

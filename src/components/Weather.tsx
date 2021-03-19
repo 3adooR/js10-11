@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink} from "react-router-dom";
 import {CityWeather} from './CityWeather';
 
 interface IProps {
@@ -16,14 +17,22 @@ export class Weather extends Component<IProps, IState> {
         let city = localStorage.getItem('cityName');
         let temp = localStorage.getItem('cityTemp');
         let data = localStorage.getItem('cityData');
-        if (!city) city = 'No city';
-        if (!temp) temp = '0';
-        if (!data) data = 'no data';
+        if (!city) city = '';
+        if (!temp) temp = '';
+        if (!data) data = '';
         this.state = {city, temp, data};
     }
 
     render() {
         const {city, temp, data} = this.state;
-        return (<CityWeather mode='full' city={city} temp={temp} data={data}/>);
+        return (<>
+            {city.length
+                ? <CityWeather mode='full' city={city} temp={temp} data={data}/>
+                : <div>
+                    <p className="mb-3">Please set the city.</p>
+                    <NavLink to="/cities" className="btn btn-primary">Find city</NavLink>
+                </div>}
+        </>);
     }
+
 }
